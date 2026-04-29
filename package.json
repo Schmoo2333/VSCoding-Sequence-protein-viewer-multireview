@@ -73,7 +73,7 @@
     "menus": {
       "explorer/context": [
         {
-          "when": "resourceExtname == .pdb || resourceExtname == .pdb.gz || resourceExtname == .PDB || resourceExtname == .mol2 || resourceExtname == .MOL2 || resourceExtname == .sdf || resourceExtname == .SDF || resourceExtname == .mmCIF || resourceExtname == .mmcif || resourceExtname == .cif.gz || resourceExtname == .MMCIF || resourceExtname == .Mol || resourceExtname == .mol || resourceExtname == .MOL || resourceExtname == .xyz || resourceExtname == .XYZ || resourceExtname == .ent || resourceExtname == .ENT || resourceExtname == .pdbqt || resourceExtname == .PDBQT || resourceExtname == .cif || resourceExtname == .CIF || resourceExtname == .mcif || resourceExtname == .MCIF || resourceExtname == .gro || resourceExtname == .GRO",
+          "when": "resourceFilename =~ /\\.(pdb|pdbqt|mmcif|mcif|cif|gro|xyz|mol|mol2|sdf|ent)(\\.gz)?$/i",
           "command": "protein-viewer-multireview.activateFromFiles",
           "group": "navigation"
         },

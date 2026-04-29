@@ -118,7 +118,8 @@ class ProteinViewerPanel {
       const initialState = ${initialState};
       const files = initialState.files;
       let currentIndex = initialState.initialIndex;
-      let navigationToken = 0;
+      let requestedIndex = currentIndex;
+      let isLoading = false;
 
       const previousButton = document.getElementById('prev-file');
       const nextButton = document.getElementById('next-file');
@@ -152,43 +153,55 @@ class ProteinViewerPanel {
         });
       }
 
-      async function loadCurrentStructure() {
-        const token = ++navigationToken;
+      async function processRequestedFile() {
+        if (isLoading) {
+          return;
+        }
+
+        isLoading = true;
         const viewer = await createViewer();
-        const currentFile = files[currentIndex];
 
-        setStatus('Loading ' + currentFile.fileName + '...');
-        await viewer.plugin.clear();
-        if (token !== navigationToken) {
-          return;
+        try {
+          while (files.length) {
+            const targetIndex = requestedIndex;
+            const currentFile = files[targetIndex];
+
+            currentIndex = targetIndex;
+            updateToolbar();
+            setStatus('Loading ' + currentFile.fileName + '...');
+
+            await viewer.plugin.clear();
+            await viewer.loadStructureFromUrl(currentFile.uri, currentFile.format, currentFile.isBinary, {
+              label: currentFile.fileName
+            });
+
+            if (requestedIndex === targetIndex) {
+              setStatus('');
+              return;
+            }
+          }
+        } catch (error) {
+          console.error(error);
+          const message = error instanceof Error ? error.message : String(error);
+          setStatus('Failed to load file: ' + message);
+        } finally {
+          isLoading = false;
+          if (requestedIndex !== currentIndex) {
+            void processRequestedFile();
+          }
         }
-
-        await viewer.loadStructureFromUrl(currentFile.uri, currentFile.format, currentFile.isBinary, {
-          label: currentFile.fileName
-        });
-
-        if (token !== navigationToken) {
-          return;
-        }
-
-        updateToolbar();
-        setStatus('');
       }
 
-      async function showFile(index) {
+      function showFile(index) {
         if (!files.length) {
           setStatus('No supported structure files found.');
           return;
         }
 
-        currentIndex = (index + files.length) % files.length;
-        try {
-          await loadCurrentStructure();
-        } catch (error) {
-          console.error(error);
-          const message = error instanceof Error ? error.message : String(error);
-          setStatus('Failed to load file: ' + message);
-        }
+        requestedIndex = (index + files.length) % files.length;
+        currentIndex = requestedIndex;
+        updateToolbar();
+        void processRequestedFile();
       }
 
       function shouldIgnoreKeyboardShortcut(target) {
@@ -201,11 +214,11 @@ class ProteinViewerPanel {
       }
 
       previousButton.addEventListener('click', () => {
-        void showFile(currentIndex - 1);
+        showFile(requestedIndex - 1);
       });
 
       nextButton.addEventListener('click', () => {
-        void showFile(currentIndex + 1);
+        showFile(requestedIndex + 1);
       });
 
       window.addEventListener('keydown', (event) => {
@@ -215,15 +228,15 @@ class ProteinViewerPanel {
 
         if (event.key === 'ArrowLeft') {
           event.preventDefault();
-          void showFile(currentIndex - 1);
+          showFile(requestedIndex - 1);
         } else if (event.key === 'ArrowRight') {
           event.preventDefault();
-          void showFile(currentIndex + 1);
+          showFile(requestedIndex + 1);
         }
       });
 
       updateToolbar();
-      void showFile(currentIndex);
+      showFile(currentIndex);
       window.focus();
     `);
     }

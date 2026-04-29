@@ -1,46 +1,96 @@
-# protein-viewer-multireview 🧬 🧪 🔬
+# Protein Viewer MultiReview
 
-<img src="img/logo.png" alt="drawing" width="200"/>
+<img src="img/logo.png" alt="Protein Viewer MultiReview logo" width="200"/>
 
-[GitHub Repository](https://github.com/Schmoo2333/VSCoding-Sequence-protein-viewer-multireview) | [License](https://opensource.org/licenses/MIT)
+[GitHub Repository](https://github.com/Schmoo2333/VSCoding-Sequence-protein-viewer-multireview) | [License](https://opensource.org/licenses/MIT) | [Mol* Viewer Docs](https://molstar.org/viewer-docs/)
 
-VSCoding Sequence allows for visualisation of protein structures and molecular data in the editor, courtesy of the fantastic [Mol*](https://molstar.org/)
+Protein Viewer MultiReview is a VS Code extension for visualising local protein structures with [Mol*](https://molstar.org/).
 
-📚 [Viewer Docs](https://molstar.org/viewer-docs/) | [Mol* Docs](https://molstar.org/docs/)
+This repository is a fork of the original [VSCoding-Sequence](https://github.com/a-r-j/vscoding-sequence) project and keeps the original MIT license notice. This fork focuses on manual review workflows for large batches of local PDB and related structure files.
 
-## 📦 Features
+## Fork Changes
 
-### 📥 Loading a Protein Structure from the [PDB](https://www.rcsb.org/) or [AlphaFoldDB](https://alphafold.ebi.ac.uk/)
+- Optimised for manual review of many local PDB files in sequence
+- Opening a single structure file now auto-collects supported files from the same folder and starts at the selected file
+- Opening a folder loads all supported structure files in that folder for sequential review
+- Added quick switching with `ArrowLeft` and `ArrowRight`
+- Added visible current file name and review position inside the viewer
 
-![Usage gif](img/usage.gif)
+## Quick Start
 
-Open the command palette (`⌘ + ⇧ + p`) and simply call the `Start protein-viewer-multireview` command, enter a [PDB accession code](https://www.rcsb.org/) or (for AlphaFold structures) a UniProt Accession & away you go!
+### Load a Local Folder with Many PDB Files
 
-### 🗓️ Loading Local File(s)
+- In the VS Code explorer, right-click a folder
+- Select `Open Protein Viewer MultiReview from Folder`
+- The extension gathers supported structure files in that folder, sorts them, and opens the first file in the review sequence
 
-![Local file usage gif](img/local_file.gif)
+### Load Starting from One File
 
-Right-click on the file or selection of files in the file editor and select `Launch protein-viewer-multireview from File(s)`
+- In the VS Code explorer, right-click a supported structure file
+- Select `Open Protein Viewer MultiReview from File(s)`
+- The extension uses that file as the starting point and automatically loads other supported files from the same folder for sequential review
 
-**✅ Supported Formats**
+### Quickly Switch Between PDB Files
 
-* `.pdb`
-* `.pdbqt`
-* `.mmcif`
-* `.gro`
-* `.xyz`
-* `.cif`
-* `.mol`
-* `.mol2`
-* `.sdf`
+- Press `ArrowLeft` to open the previous structure
+- Press `ArrowRight` to open the next structure
+- You can also use the `Previous` and `Next` buttons in the viewer toolbar
+- The toolbar shows the current file name and progress such as `3 / 18`
 
-### 📂 Loading a Local Folder
+### Load a Remote Structure
 
-![Local folder usage gif](img/local_folder.gif)
+- Open the command palette with `Ctrl+Shift+P` or `Cmd+Shift+P`
+- Run `Start Protein Viewer MultiReview`
+- Enter a PDB accession code or an AlphaFoldDB UniProt accession
 
-Right-click on the folder in the file explorer and select `Launch protein-viewer-multireview from Folder`.
+## Supported Formats
 
-## ⚙️ Usage
+- `.pdb`
+- `.pdb.gz`
+- `.pdbqt`
+- `.mmcif`
+- `.mmcif.gz`
+- `.mcif`
+- `.mcif.gz`
+- `.cif`
+- `.cif.gz`
+- `.gro`
+- `.xyz`
+- `.mol`
+- `.mol2`
+- `.sdf`
+- `.ent`
+
+## Packaging and Manual Installation
+
+### Generate a VSIX Package
+
+```bash
+npm install
+npm run compile
+npx @vscode/vsce package
+```
+
+The generated file will look like:
+
+```bash
+protein-viewer-multireview-0.1.1.vsix
+```
+
+### Install the VSIX Manually
+
+- In VS Code, open the Extensions view
+- Click the `...` menu
+- Choose `Install from VSIX...`
+- Select the generated `.vsix` file
+
+Or install from the command line:
+
+```bash
+code --install-extension ./protein-viewer-multireview-0.1.1.vsix
+```
+
+## Mol* Usage Reference
 
 *The below is taken from the [Mol\* viewer docs](https://molstar.org/viewer-docs/) which is based on the [RCSB PDB mol* documentation](https://www.rcsb.org/3d-view/molstar/help/getting-started) thanks to the generosity of [RCSB PDB](https://www.rcsb.org/) and Dr. Shuchismita Dutta.*
 
@@ -93,21 +143,11 @@ As you interact with the structure using the mouse, Mol* contains two modes for 
 * **Default Mode**: A click on a residue (or any object in 3D) will focus on it. The focused residue and its surroundings (residues and ligands) will be displayed in a ball & stick representation. All local non-covalent interactions will be shown. To hide the surroundings, click on the target residue again.
 * **[Selection Mode](https://molstar.org/viewer-docs/making-selections/#selection-mode)**: A click on a residue (or any object in 3D) will select it. What exactly will be selected depends on the value of the [Picking Level](https://molstar.org/viewer-docs/making-selections/#picking-level). Selected parts of the structure will appear with a bright green tint in the 3D canvas and in the [Sequence Panel](https://molstar.org/viewer-docs/navigating-by-sequence/#sequence-panel). When selecting polymers with the Picking Level set to “residue,” holding the Shift key while clicking will extend the selection along the polymer from the last clicked residue on. Clicking on any point in the 3D canvas that has no atom will clear the selection.
 
-## 🧲 Installation
-
-* The extension source repository is available on [GitHub](https://github.com/Schmoo2333/VSCoding-Sequence-protein-viewer-multireview)
-
-* Altenatively, enter `⌘ + ⇧ + x` in VSCode and search for `protein-viewer-multireview`
-
 ## 📬 Community
 
 ### Support
 
 Need help? Please [open an issue](https://github.com/Schmoo2333/VSCoding-Sequence-protein-viewer-multireview/issues/new/choose) for support.
-
-### Discussion
-
-Find me on twitter: [@arian_jamasb](https://twitter.com/arian_jamasb) or drop me an email: [arian@jamasb.io](mailto:arian@jamasb.io)
 
 ## 🌪️ Change log
 
