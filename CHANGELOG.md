@@ -1,6 +1,6 @@
 # Change Log
 
-All notable changes to the "protein-viewer" extension will be documented in this file.
+All notable changes to the "protein-viewer-multireview" extension will be documented in this file.
 
 ### 0.1.0
 

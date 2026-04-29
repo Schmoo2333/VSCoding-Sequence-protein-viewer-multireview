@@ -1,11 +1,11 @@
 {
-  "name": "protein-viewer",
-  "displayName": "Protein Viewer",
+  "name": "protein-viewer-multireview",
+  "displayName": "Protein Viewer MultiReview",
   "description": "Visualise 3D biological structures in the editor",
   "version": "0.1.1",
-  "publisher": "ArianJamasb",
+  "publisher": "zhaolong",
   "author": {
-    "name": "Arian Jamasb"
+    "name": "zhaolong"
   },
   "icon": "img/logo.png",
   "engines": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/a-r-j/vscoding-sequence.git"
+    "url": "https://github.com/Schmoo2333/VSCoding-Sequence-protein-viewer-multireview"
   },
   "license": "MIT",
   "categories": [
@@ -45,41 +45,41 @@
     "computational chemistry"
   ],
   "activationEvents": [
-    "onCommand:protein-viewer.start",
-    "onCommand:protein-viewer.activateFromFiles",
-    "onCommand:protein-viewer.activateFromFolder",
-    "onCommand:protein-viewer.ESMFold"
+    "onCommand:protein-viewer-multireview.start",
+    "onCommand:protein-viewer-multireview.activateFromFiles",
+    "onCommand:protein-viewer-multireview.activateFromFolder",
+    "onCommand:protein-viewer-multireview.ESMFold"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "protein-viewer.start",
-        "title": "Start Protein Viewer"
+        "command": "protein-viewer-multireview.start",
+        "title": "Start Protein Viewer MultiReview"
       },
       {
-        "command": "protein-viewer.activateFromFiles",
-        "title": "Launch Protein Viewer from File(s)"
+        "command": "protein-viewer-multireview.activateFromFiles",
+        "title": "Open Protein Viewer MultiReview from File(s)"
       },
       {
-        "command": "protein-viewer.activateFromFolder",
-        "title": "Launch Protein Viewer from Folder"
+        "command": "protein-viewer-multireview.activateFromFolder",
+        "title": "Open Protein Viewer MultiReview from Folder"
       },
       {
-        "command": "protein-viewer.ESMFold",
-        "title": "ESMFold Sequence"
+        "command": "protein-viewer-multireview.ESMFold",
+        "title": "Protein Viewer MultiReview: ESMFold Sequence"
       }
     ],
     "menus": {
       "explorer/context": [
         {
           "when": "resourceExtname == .pdb || resourceExtname == .pdb.gz || resourceExtname == .PDB || resourceExtname == .mol2 || resourceExtname == .MOL2 || resourceExtname == .sdf || resourceExtname == .SDF || resourceExtname == .mmCIF || resourceExtname == .mmcif || resourceExtname == .cif.gz || resourceExtname == .MMCIF || resourceExtname == .Mol || resourceExtname == .mol || resourceExtname == .MOL || resourceExtname == .xyz || resourceExtname == .XYZ || resourceExtname == .ent || resourceExtname == .ENT || resourceExtname == .pdbqt || resourceExtname == .PDBQT || resourceExtname == .cif || resourceExtname == .CIF || resourceExtname == .mcif || resourceExtname == .MCIF || resourceExtname == .gro || resourceExtname == .GRO",
-          "command": "protein-viewer.activateFromFiles",
+          "command": "protein-viewer-multireview.activateFromFiles",
           "group": "navigation"
         },
         {
           "when": "explorerResourceIsFolder",
-          "command": "protein-viewer.activateFromFolder",
+          "command": "protein-viewer-multireview.activateFromFolder",
           "group": "navigation"
         }
       ]
@@ -96,11 +96,12 @@
   "devDependencies": {
     "@types/glob": "^7.1.4",
     "@types/mocha": "^9.0.0",
-    "@types/vscode": "^1.95.0",
+    "@types/node": "^16.18.11",
+    "@types/vscode": "^1.62.0",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "@vscode/test-electron": "^1.6.2",
-    "eslint": "^8.1.0",
+    "eslint": "^8.57.1",
     "glob": "^7.1.7",
     "mocha": "^9.1.3",
     "typescript": "^4.4.4"

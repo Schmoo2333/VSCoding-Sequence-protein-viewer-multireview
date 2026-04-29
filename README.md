@@ -1,13 +1,8 @@
-# VSCoding-Sequence 🧬 🧪 🔬
+# protein-viewer-multireview 🧬 🧪 🔬
 
 <img src="img/logo.png" alt="drawing" width="200"/>
 
-[![Version](https://vsmarketplacebadge.apphb.com/version/ArianJamasb.protein-viewer.svg?color=blue&style=?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=ArianJamasb.protein-viewer)
-[![vscode last updated](https://img.shields.io/visual-studio-marketplace/last-updated/ArianJamasb.protein-viewer)](https://marketplace.visualstudio.com/items?itemName=ArianJamasb.protein-viewer)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-[![vscode downloads](https://img.shields.io/visual-studio-marketplace/i/ArianJamasb.protein-viewer)](https://marketplace.visualstudio.com/items?itemName=ArianJamasb.protein-viewer) [![Downloads](https://vsmarketplacebadge.apphb.com/downloads/ArianJamasb.protein-viewer.svg?color=orange)](https://marketplace.visualstudio.com/items?itemName=ArianJamasb.protein-viewer)
-[![Trending-Weekly](https://vsmarketplacebadge.apphb.com/trending-weekly/ArianJamasb.protein-viewer.svg?logo=tinder&logoColor=white&label=trending%20weekly)](https://marketplace.visualstudio.com/items?itemName=ArianJamasb.protein-viewer) [![Trending-Monthly](https://vsmarketplacebadge.apphb.com/trending-monthly/ArianJamasb.protein-viewer.svg?logo=tinder&logoColor=white&label=monthly)](https://marketplace.visualstudio.com/items?itemName=ArianJamasb.protein-viewer)
+[GitHub Repository](https://github.com/Schmoo2333/VSCoding-Sequence-protein-viewer-multireview) | [License](https://opensource.org/licenses/MIT)
 
 VSCoding Sequence allows for visualisation of protein structures and molecular data in the editor, courtesy of the fantastic [Mol*](https://molstar.org/)
 
@@ -19,13 +14,13 @@ VSCoding Sequence allows for visualisation of protein structures and molecular d
 
 ![Usage gif](img/usage.gif)
 
-Open the command palette (`⌘ + ⇧ + p`) and simply call the `Start Protein Viewer` command, enter a [PDB accession code](https://www.rcsb.org/) or (for AlphaFold structures) a UniProt Accession & away you go!
+Open the command palette (`⌘ + ⇧ + p`) and simply call the `Start protein-viewer-multireview` command, enter a [PDB accession code](https://www.rcsb.org/) or (for AlphaFold structures) a UniProt Accession & away you go!
 
 ### 🗓️ Loading Local File(s)
 
 ![Local file usage gif](img/local_file.gif)
 
-Right-click on the file or selection of files in the file editor and select `Launch Protein Viewer from File(s)`
+Right-click on the file or selection of files in the file editor and select `Launch protein-viewer-multireview from File(s)`
 
 **✅ Supported Formats**
 
@@ -43,7 +38,7 @@ Right-click on the file or selection of files in the file editor and select `Lau
 
 ![Local folder usage gif](img/local_folder.gif)
 
-Right-click on the folder in the file explorer and select `Launch Protein Viewer from Folder`.
+Right-click on the folder in the file explorer and select `Launch protein-viewer-multireview from Folder`.
 
 ## ⚙️ Usage
 
@@ -100,15 +95,15 @@ As you interact with the structure using the mouse, Mol* contains two modes for 
 
 ## 🧲 Installation
 
-* The extension can be downloaded/installed from the [VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=ArianJamasb.protein-viewer)
+* The extension source repository is available on [GitHub](https://github.com/Schmoo2333/VSCoding-Sequence-protein-viewer-multireview)
 
-* Altenatively, enter `⌘ + ⇧ + x` in VSCode and search for `Protein Viewer`
+* Altenatively, enter `⌘ + ⇧ + x` in VSCode and search for `protein-viewer-multireview`
 
 ## 📬 Community
 
 ### Support
 
-Need help? Please [open an issue](https://github.com/a-r-j/vscoding-sequence/issues/new/choose) for support.
+Need help? Please [open an issue](https://github.com/Schmoo2333/VSCoding-Sequence-protein-viewer-multireview/issues/new/choose) for support.
 
 ### Discussion
 
